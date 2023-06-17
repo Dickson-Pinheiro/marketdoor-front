@@ -28,18 +28,20 @@ export const ContainerInput = styled.div`
     p {
         font-size: 12px;
         color: #FFB800;
-        font-family: 'Laila', sans-serif;
+        font-family: 'Nunito', sans-serif;
     }
     input {
-        font-family: 'Laila', sans-serif;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
         padding-left: 15px;
         width: 320px;
         height: 50px;
         border-radius: 8px;
         border: 3px solid #FFB800;
         &::placeholder {
-            color: #030532;
-            font-weight: 600;
+            color: #4C5958;
+            font-weight: 800;
+            font-family: 'Nunito', sans-serif;
         }
     }
 `
