@@ -12,7 +12,7 @@ export const Button = styled.button`
     width: 120px;
     height: 50px;
     color: #ffffff;
-    font-family: 'Laila', sans-serif;
+    font-family: 'Nunito', sans-serif;
     border-radius: 12px;
     font-weight: bold;
     font-size: 24px;
