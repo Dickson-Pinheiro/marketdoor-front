@@ -1,12 +1,23 @@
 import { Formik, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
 import styled from 'styled-components'
+import storeApi from "../services/storeApi";
 import logoImg from '../assets/market_logo.png';
+import {toast} from 'react-toastify'
 import { FormStyle, Button, ContainerInput } from "../styles/FormStyle";
 
 export default function LoginStore() {
-    async function submitLogin({ username, password }) {
-        return;
+    const { loginStore } = storeApi()
+
+    async function submitLogin(values) {
+        try {
+            const response = await loginStore(values.username, values.password)
+            localStorage.setItem('token', response.token)
+            values.username = ''
+            values.password = ''
+        } catch (error) {
+            toast('Não foi possível concluir o login.')
+        }
     }
     return (
         <ContainerLogin>

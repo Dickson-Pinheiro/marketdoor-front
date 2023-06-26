@@ -1,11 +1,22 @@
 import { Formik, Field, ErrorMessage } from "formik"
 import * as Yup from 'yup'
 import styled from 'styled-components'
+import marketApi from "../services/marketApi";
 import logoImg from '../assets/market_logo.png';
 import { FormStyle, Button, ContainerInput } from "../styles/FormStyle";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 export default function Signup() {
+    const navigate = useNavigate()
+    const { createMarket } = marketApi()
+
     async function submitSignup({ name, email, password }) {
-        return;
+        try {
+            await createMarket(name, email, password)
+            navigate('/market/login')
+        } catch (error) {
+            toast('Não foi possível criar a conta. Tente novamente')
+        }
     }
     return (
         <ContainerSignup>
@@ -26,15 +37,15 @@ export default function Signup() {
                     formik => (
                         <FormStyle onSubmit={formik.handleSubmit}>
                             <ContainerInput>
-                                <Field name="name" placeholder="market..." type="text" />
+                                <Field name="name" placeholder="market..." type="text" required/>
                                 <ErrorMessage name="name" component="p" />
                             </ContainerInput>
                             <ContainerInput>
-                                <Field name="email" placeholder="email..." type="text" />
+                                <Field name="email" placeholder="email..." type="text" required/>
                                 <ErrorMessage name="email" component="p" />
                             </ContainerInput>
                             <ContainerInput>
-                                <Field name="password" placeholder="password..." type="password" />
+                                <Field name="password" placeholder="password..." type="password" required/>
                                 <ErrorMessage name="password" component="p" />
                             </ContainerInput>
                             <Button disable={formik.isSubmitting} type="submit">signup</Button>

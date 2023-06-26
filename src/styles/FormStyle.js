@@ -19,6 +19,9 @@ export const Button = styled.button`
     border: none;
     background-color: #FFB800;
     cursor: pointer;
+    &:disabled {
+        opacity: 0.9;
+    }
 `
 
 export const ContainerInput = styled.div`
