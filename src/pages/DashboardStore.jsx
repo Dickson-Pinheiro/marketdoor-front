@@ -197,6 +197,8 @@ const Button = styled.button`
 const ContainerProducts = styled.div`
     display: flex;
     gap: 15px;
+    align-items: center;
+    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     max-width: 900px;
