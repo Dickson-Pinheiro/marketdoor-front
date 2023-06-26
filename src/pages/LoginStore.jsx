@@ -5,9 +5,11 @@ import storeApi from "../services/storeApi";
 import logoImg from '../assets/market_logo.png';
 import {toast} from 'react-toastify'
 import { FormStyle, Button, ContainerInput } from "../styles/FormStyle";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginStore() {
     const { loginStore } = storeApi()
+    const navigate = useNavigate()
 
     async function submitLogin(values) {
         try {
@@ -15,7 +17,9 @@ export default function LoginStore() {
             localStorage.setItem('token', response.token)
             values.username = ''
             values.password = ''
+            navigate('/store/dash')
         } catch (error) {
+            console.log('error')
             toast('Não foi possível concluir o login.')
         }
     }

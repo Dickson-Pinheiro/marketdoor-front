@@ -9,7 +9,7 @@ export default function storeApi(){
 
     const services = {
         async loginStore(username, password){
-            const response = await api.post('/market/login', {username, password})
+            const response = await api.post('/store/login', {username, password})
             return response.data
         }     
     }

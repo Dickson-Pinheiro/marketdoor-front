@@ -16,6 +16,7 @@ export default function DashboardMarket() {
         async function pullStores() {
             const newStores = await getStores()
             setStores([...newStores])
+            console.log(newStores)
         }
         pullStores()
     }, [updateStores])
@@ -72,7 +73,7 @@ export default function DashboardMarket() {
                 <p>Para fazer login com uma loja, <Link to='/store/login'>clique aqui.</Link></p>
             </ContainerRedirect>
             <ContainerStores>
-                {stores.length == 0 ? <p>Você ainda não possui lojas cadastradas.</p> : stores.map(item => <CardStore key={item.id} name={item.name} username={item.username} />).reverse()}
+                {stores.length == 0 ? <p>Você ainda não possui lojas cadastradas.</p> : stores.map(item => <CardStore key={item.username} name={item.name} username={item.username} />).reverse()}
             </ContainerStores>
         </ContainerDash>
     )
