@@ -23,7 +23,7 @@ display: flex;
 position: relative;
 flex-direction: column;
 width: 220px;
-height: 230px;
+height: 260px;
 background-color: #FFB800;
 cursor: pointer;
 transition: 300ms;

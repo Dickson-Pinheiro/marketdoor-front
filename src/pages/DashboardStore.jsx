@@ -5,6 +5,8 @@ import CardProduct from '../components/CardProduct'
 import StoreForm from '../components/StoreForm'
 import Modal from '../components/Modal'
 import { FaPlus } from 'react-icons/fa'
+import NoProduct from '../components/NoProduct'
+import Spinner from '../components/Spinner'
 
 export default function DashboardStore() {
     const { getProducts } = productApi()
@@ -20,7 +22,7 @@ export default function DashboardStore() {
         pullProducts()
     }, [updateProducts])
 
-    function openModal(){
+    function openModal() {
         setOpen(!open)
         console.log('chamou')
         console.log(open)
@@ -32,10 +34,9 @@ export default function DashboardStore() {
                 <h1>Dashboard</h1>
                 <p>Aqui você pode criar e gerenciar novos produtos para a sua loja!</p>
             </ContainerTitle>
-            <Modal open={open} setOpen={setOpen}><StoreForm setUpdateProducts={setUpdateProducts} updateProducts={updateProducts} open={open} setOpen={setOpen}/></Modal>
-            <div>
-                {products === undefined ? <p>loading...</p> : (
-                    products.length === 0 ? <p>Você ainda não tem produtos cadastrados</p> : (
+            <ContainerContent>
+                {products === undefined ? <Spinner />  : (
+                    products.length === 0 ? <NoProduct /> : (
                         <ContainerProducts>
                             {
                                 products.map(item => <CardProduct
@@ -51,11 +52,15 @@ export default function DashboardStore() {
                         </ContainerProducts>
                     )
                 )}
-            </div>
-            <AddProduct onClick={openModal}><FaPlus size={30} color='#FFFFFF'/></AddProduct>
+            </ContainerContent>
+            <Modal open={open} setOpen={setOpen}><StoreForm setUpdateProducts={setUpdateProducts} updateProducts={updateProducts} open={open} setOpen={setOpen} /></Modal>
+            <AddProduct onClick={openModal}><FaPlus size={30} color='#FFFFFF' /></AddProduct>
         </ContainerDashBoardStore>
     )
 }
+
+const ContainerContent = styled.div`
+`
 
 const ContainerTitle = styled.div`
     display: flex;
@@ -79,13 +84,14 @@ const ContainerDashBoardStore = styled.main`
     min-height: 100vh;
     width: 100%;
     padding: 12px;
+    display: flex;
+    flex-direction: column;
 `
 
 const ContainerProducts = styled.div`
     display: flex;
     gap: 15px;
     align-items: center;
-    justify-content: center;
     flex-wrap: wrap;
     width: 100%;
     max-width: 900px;
