@@ -6,7 +6,7 @@ export default function Header(){
         <ContainerHeader>
             <HeaderContent>
                 <Circle>
-                    <img src={logoImg} alt='sacola de compras amarela' />
+                   <h1>MarketDoor</h1>
                 </Circle>
                 <Menu>
                     <li><a>INICIO</a></li>
@@ -37,16 +37,12 @@ const HeaderContent = styled.div`
 `
 
 const Circle = styled.div`
-    width: 70px;
-    height: 70px;
-    background-color: #FFFFFF;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
     cursor: pointer;
-    img {
-        width: 55px;
+    h1 {
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        font-size: 24px;
+        color: #030532;
     }
 `
 

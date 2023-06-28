@@ -22,11 +22,6 @@ export default function About() {
                 <p>Com foco no <span>gerenciamento</span> de estoque, nossa proposta é conseguir integrar sua loja física com o nosso app de delivery. Dessa forma, todas as promoções e disponibilidade de produtos estarão atualizados em tempo real, <span>sinctonizados com a sua loja.</span></p>
             </ContainerText>
             <Container>
-                <p>Ainda não possui seu mercado cadastrado? <Link to='/market/signup'> Inicie aqui!</Link></p>
-                <ContainerButtons>
-                    <button onClick={handleLoginMarket}>MARKET LOGIN</button>
-                    <button onClick={handleLoginStore}>STORE LOGIN</button>
-                </ContainerButtons>
             </Container>
         </AboutContainer>
     )
@@ -34,6 +29,7 @@ export default function About() {
 
 const AboutContainer = styled.main`
     padding: 12px;
+    width: 100%;
     padding-bottom: 25px;
     box-sizing: border-box;
     display: flex;
@@ -41,7 +37,7 @@ const AboutContainer = styled.main`
     align-items: center;
     gap: 30px;
     h1 {
-        font-size: 32px;
+        font-size: 24px;
         font-weight: 700;
         font-family: 'Nunito', sans-serif;
         color: #030532;
@@ -53,14 +49,15 @@ const AboutContainer = styled.main`
 
 const ContainerText = styled.div`
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 50px;
     flex-wrap: wrap;
     p {
-        max-width: 520px;
+        max-width: 320px;
         width: 100%;
-        font-size: 24px;
+        font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #030532;
         font-weight: 600;
@@ -76,7 +73,7 @@ const Container = styled.div`
     align-items: center;
     gap: 20px;
     p {
-        font-size: 20px;
+        font-size: 18px;
         font-family: 'Nunito', sans-serif;
         color: #030532;
         a {
