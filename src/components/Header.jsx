@@ -89,11 +89,13 @@ const ContainerLoginLinks = styled.div`
         width: 120px;
         padding: 10px;
         border-radius: 8px;
+        transition: 300ms;
         a {
             text-decoration: none;
             color: #FFB800;
             font-weight: 800;
             font-size: 14px;
+            transition: 0.3s;
             &:hover {
                 color: #FFFFFF;
             }
@@ -102,6 +104,9 @@ const ContainerLoginLinks = styled.div`
     &:hover {
         ul {
             visibility: visible;
+        }
+        svg {
+            transform: rotateZ(-90deg)
         }
     }
 `
