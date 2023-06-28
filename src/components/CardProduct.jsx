@@ -28,6 +28,8 @@ background-color: #FFB800;
 cursor: pointer;
 transition: 300ms;
 border: 1px solid #FFFFFF;
+border-radius: 9px;
+transition: 300ms;
 &:hover {
     border: 1px solid #FFB800;
 }
@@ -40,6 +42,8 @@ const ContainerImage = styled.div`
     background-size: contain;
     background-position: center;
     background-color: white;
+    border-radius: 8px 8px 50px 50px;
+    transition: 300ms;
 `
 
 const Content = styled.div`

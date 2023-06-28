@@ -1,17 +1,21 @@
 import styled from 'styled-components'
-import logoImg from '../assets/market_logo.png'
-
-export default function Header(){
+import { FiChevronLeft } from 'react-icons/fi'
+import { Link } from 'react-router-dom'
+export default function Header() {
     return (
         <ContainerHeader>
             <HeaderContent>
-                <Circle>
-                   <h1>MarketDoor</h1>
-                </Circle>
+                <Logo>
+                    <h1>MarketDoor</h1>
+                </Logo>
                 <Menu>
-                    <li><a>INICIO</a></li>
-                    <li><a>SOBRE</a></li>
-                    <Button>Login</Button>
+                    <ContainerLoginLinks>
+                        <button>Login<FiChevronLeft size={18} /></button>
+                        <ul>
+                            <li><Link to='/market/login'>Market</Link></li>
+                            <li><Link to='/store/login'>Store</Link></li>
+                        </ul>
+                    </ContainerLoginLinks>
                 </Menu>
             </HeaderContent>
         </ContainerHeader>
@@ -36,7 +40,7 @@ const HeaderContent = styled.div`
     max-width: 800px;
 `
 
-const Circle = styled.div`
+const Logo = styled.div`
     cursor: pointer;
     h1 {
         font-family: 'Nunito', sans-serif;
@@ -51,39 +55,53 @@ const Menu = styled.ul`
     align-items: center;
     justify-content: center;
     gap: 24px;
-    li {
-        list-style: none;
+`
+
+const ContainerLoginLinks = styled.div`
+    position: relative;
+    button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 20px;
+        background-color: #030532;
+        color: #FFB800;
+        border: none;
+        border-radius: 12px;
+        cursor: pointer;
+        width: 120px;
+        height: 32px;
+        font-family: 'Nunito', sans-serif;
+        font-weight: 800;
+        transition: 300ms;
+    &:hover {
+        background-color: #030532;
+        color: #FFB800;
+    }
+    }
+    ul {
+        visibility: hidden;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        position: absolute;
+        background-color: #030532;
+        width: 120px;
+        padding: 10px;
+        border-radius: 8px;
         a {
             text-decoration: none;
-            font-family: 'Bebas Neue', sans-serif;
-            color: #030532;
-            cursor: pointer;
-            font-weight: 400;
-            font-size: 16px;
-            transition: 300ms;
+            color: #FFB800;
+            font-weight: 800;
+            font-size: 14px;
             &:hover {
                 color: #FFFFFF;
             }
         }
     }
-`
-
-const Button = styled.button`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #FFFFFF;
-    color: #030532;
-    border: none;
-    border-radius: 12px;
-    cursor: pointer;
-    width: 80px;
-    height: 32px;
-    font-family: 'Bebas Neue', sans-serif;
-    font-weight: 600;
-    transition: 300ms;
     &:hover {
-        background-color: #030532;
-        color: #FFB800;
+        ul {
+            visibility: visible;
+        }
     }
 `

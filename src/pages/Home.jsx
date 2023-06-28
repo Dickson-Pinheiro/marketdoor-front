@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 import Header from '../components/Header'
-import Fruits from '../components/fruits'
 import About from '../components/About'
 import MarketForm from '../components/MarketForm'
 
@@ -9,13 +8,13 @@ export default function Home() {
         <ContainerHome>
             <Header></Header>
             <Content>
-            <h1>Crie seu <span>mercado</span> e gerencie uma ou mais <span>lojas</span>!</h1>
-            <Container>
-                <About></About>
-                <ContainerCreateMarket>
-                    <MarketForm></MarketForm>
-                </ContainerCreateMarket>
-            </Container>
+                <h1>Crie seu <span>mercado</span> e gerencie uma ou mais <span>lojas</span>!</h1>
+                <Container>
+                    <About></About>
+                    <ContainerCreateMarket>
+                        <MarketForm></MarketForm>
+                    </ContainerCreateMarket>
+                </Container>
             </Content>
         </ContainerHome>
     )
