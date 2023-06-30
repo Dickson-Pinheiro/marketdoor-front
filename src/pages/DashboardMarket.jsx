@@ -5,18 +5,28 @@ import marketApi from "../services/marketApi";
 import { styled } from "styled-components";
 import { Formik, Field } from "formik";
 import CardStore from "../components/CardStore";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Spinner from "../components/Spinner";
 
 export default function DashboardMarket() {
     const { getStores, createStore } = marketApi()
     const [stores, setStores] = useState()
     const [updateStores, setUpdateStores] = useState(false)
+    const navigate = useNavigate()
 
+    let shouldShowToast = true
     useEffect(() => {
         async function pullStores() {
-            const newStores = await getStores()
-            setStores([...newStores])
-            console.log(newStores)
+            try {
+                const newStores = await getStores()
+                setStores([...newStores])
+            } catch (error) {
+                if (error.response.status === 401 && shouldShowToast) {
+                    shouldShowToast = false
+                    toast('É necessário fazer login novamete.')
+                    navigate('/market/login')
+                }
+            }
         }
         pullStores()
     }, [updateStores])
@@ -29,13 +39,12 @@ export default function DashboardMarket() {
             value.username = ''
             value.password = ''
         } catch (error) {
-            console.log(error)
+            if (error.name === 'UnauthorizedError') {
+                toast('É necessário fazer login novamete.')
+                navigate('/market/login')
+            }
             toast('Tente com o username diferente.')
         }
-    }
-
-    if (stores === undefined) {
-        return 'loading'
     }
 
     return (
@@ -73,7 +82,7 @@ export default function DashboardMarket() {
                 <p>Para fazer login com uma loja, <Link to='/store/login'>clique aqui.</Link></p>
             </ContainerRedirect>
             <ContainerStores>
-                {stores.length == 0 ? <p>Você ainda não possui lojas cadastradas.</p> : stores.map(item => <CardStore key={item.username} name={item.name} username={item.username} />).reverse()}
+                {stores === undefined ? <Spinner /> : stores.length == 0 ? <p>Você ainda não possui lojas cadastradas.</p> : stores.map(item => <CardStore key={item.username} name={item.name} username={item.username} />).reverse()}
             </ContainerStores>
         </ContainerDash>
     )

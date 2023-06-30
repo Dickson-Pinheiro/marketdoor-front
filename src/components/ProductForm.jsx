@@ -5,11 +5,13 @@ import { toast } from 'react-toastify'
 import styled from 'styled-components'
 import productApi from '../services/productApi'
 import categoryApi from '../services/categoryApi'
+import { useNavigate } from 'react-router-dom'
 
-export default function StoreForm({updateProducts, setUpdateProducts, setOpen, open}) {
+export default function ProductForm({ updateProducts, setUpdateProducts, setOpen, open }) {
     const [categories, setCategories] = useState()
     const { getCategories } = categoryApi()
     const { createProduct } = productApi()
+    const navigate = useNavigate()
 
     useEffect(() => {
         async function pullCategories() {
@@ -29,11 +31,15 @@ export default function StoreForm({updateProducts, setUpdateProducts, setOpen, o
             setUpdateProducts(!updateProducts)
             setOpen(false)
         } catch (error) {
-            toast('Não foi possível criar o produto')
+            switch (error.response.status) {
+                case 401:
+                    toast('É necessário realizar login novamente.')
+                    navigate('/store/login')
+            }
         }
     }
 
-    function closeModal(){
+    function closeModal() {
         setOpen(false)
     }
 
@@ -52,7 +58,7 @@ export default function StoreForm({updateProducts, setUpdateProducts, setOpen, o
             onSubmit={handleProduct}
         >
             {formik => (
-                <Form onSubmit={formik.handleSubmit} method='dialog'> 
+                <Form onSubmit={formik.handleSubmit} method='dialog'>
                     <Field type='text' name='name' placeholder='name' requred />
                     <Field as='textarea' type='text' name='description' placeholder='Description' requred />
                     <Field type='text' name='image_url' placeholder='image url' requred />

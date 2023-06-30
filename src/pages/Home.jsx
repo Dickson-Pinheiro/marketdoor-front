@@ -21,7 +21,8 @@ export default function Home() {
 }
 
 const Content = styled.div`
-     h1 {
+    padding: 10px;
+    h1 {
         text-align: center;
         margin-top: 50px;
         margin-bottom: 50px;
@@ -50,6 +51,9 @@ const Container = styled.div`
     max-width: 900px;
     flex: 1;
     margin: 0 auto;
+    @media(max-width: 600px){
+        flex-direction: column;
+    }
 `
 
 const ContainerCreateMarket = styled.div`

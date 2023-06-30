@@ -1,31 +1,52 @@
 import styled from 'styled-components'
 import productApi from '../services/productApi'
 import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
 import CardProduct from '../components/CardProduct'
-import StoreForm from '../components/StoreForm'
 import Modal from '../components/Modal'
 import { FaPlus } from 'react-icons/fa'
 import NoProduct from '../components/NoProduct'
 import Spinner from '../components/Spinner'
+import ProductForm from '../components/ProductForm'
+import { useNavigate } from 'react-router-dom'
+import Pagination from '../components/Pagination'
 
 export default function DashboardStore() {
     const { getProducts } = productApi()
     const [products, setProducts] = useState()
     const [updateProducts, setUpdateProducts] = useState(false)
+    const [current, setCurrent] = useState(1)
+    const [count, setCount] = useState()
     const [open, setOpen] = useState(false)
+    const navigate = useNavigate()
+
+    let shouldShowToast = true;
 
     useEffect(() => {
         async function pullProducts() {
-            const response = await getProducts()
-            setProducts([...response])
+            try {
+                const response = await getProducts(current)
+                console.log('response', response)
+                setProducts([...response.products])
+                setCount(response.count.store_id)
+            } catch (error) {
+                console.log(error)
+                switch (error.response.status) {
+                    case 401:
+                        if (shouldShowToast) {
+                            shouldShowToast = false
+                            toast('É necessário fazer login novamente.')
+                            navigate('/store/login')
+                        }
+                }
+            }
         }
         pullProducts()
-    }, [updateProducts])
+    }
+        , [updateProducts])
 
     function openModal() {
         setOpen(!open)
-        console.log('chamou')
-        console.log(open)
     }
 
     return (
@@ -35,7 +56,7 @@ export default function DashboardStore() {
                 <p>Aqui você pode criar e gerenciar novos produtos para a sua loja!</p>
             </ContainerTitle>
             <ContainerContent>
-                {products === undefined ? <Spinner />  : (
+                {products === undefined ? <Spinner /> : (
                     products.length === 0 ? <NoProduct /> : (
                         <ContainerProducts>
                             {
@@ -52,8 +73,9 @@ export default function DashboardStore() {
                         </ContainerProducts>
                     )
                 )}
+                {count ? <Pagination updateProducts={updateProducts} setUpdateProducts={setUpdateProducts} count={count} setCurrent={setCurrent} current={current} /> : ''}
             </ContainerContent>
-            <Modal open={open} setOpen={setOpen}><StoreForm setUpdateProducts={setUpdateProducts} updateProducts={updateProducts} open={open} setOpen={setOpen} /></Modal>
+            <Modal open={open} setOpen={setOpen}><ProductForm setUpdateProducts={setUpdateProducts} updateProducts={updateProducts} open={open} setOpen={setOpen} /></Modal>
             <AddProduct onClick={openModal}><FaPlus size={30} color='#FFFFFF' /></AddProduct>
         </ContainerDashBoardStore>
     )
@@ -91,11 +113,11 @@ const ContainerDashBoardStore = styled.main`
 const ContainerProducts = styled.div`
     display: flex;
     gap: 15px;
-    align-items: center;
     flex-wrap: wrap;
     width: 100%;
-    max-width: 900px;
+    max-width: 950px;
     margin: 0 auto;
+    min-height: 500px;
     margin-top: 40px;
 `
 

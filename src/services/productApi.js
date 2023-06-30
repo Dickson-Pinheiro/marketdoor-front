@@ -21,11 +21,11 @@ export default function productApi() {
             return response.data
         },
 
-        async getProducts(){
-            const response = await api.get('/product')
+        async getProducts(page){
+            const response = await api.get(`/product?page=${page}`)
+            console.log(response.data)
             return response.data
         }
     }
-
     return services;
 }
