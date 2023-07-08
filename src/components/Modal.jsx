@@ -21,12 +21,13 @@ export default function Modal({ children, open }) {
 
 const ContainerModal = styled.dialog`
     z-index: 2;
-    border: 1px solid #FFB800;
+    border: 1px solid ${props => props.theme.primary};
     width: 100%;
     max-width: 800px;
     height: 80%;
     border-radius: 8px;
-    box-shadow: 0px 0px 6px #FFB800;
+    box-shadow: 0px 0px 6px ${props => props.theme.primary};
+    background-color: ${props => props.theme.backgroundColor};
     &::backdrop {
     background-color: #000000;
     opacity: 0.6;

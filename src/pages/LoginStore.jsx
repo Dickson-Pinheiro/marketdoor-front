@@ -47,7 +47,7 @@ export default function LoginStore() {
                                 <Field name="password" placeholder="password..." type="password" />
                                 <ErrorMessage name="password" component="p" />
                             </ContainerInput>
-                            <Button disable={formik.isSubmitting} type="submit">Login</Button>
+                            <Button disabled={formik.isSubmitting} type="submit">Login</Button>
                         </FormStyle>
                     )
                 }
@@ -73,6 +73,6 @@ const ContainerLogo = styled.div`
         font-family: 'Nunito', sans-serif;
         font-size: 32px;
         font-weight: bold;
-        color: ${props => props.theme.black};
+        color: ${props => props.theme.logoColor};
     }
     `

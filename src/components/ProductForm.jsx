@@ -93,9 +93,10 @@ const Form = styled.form`
         width: 320px;
         height: 90px;
         border-radius: 4px;
-        border: 1px solid #FFB800;
+        border: 1px solid ${props => props.theme.placehouderColor};
+        background-color: ${props => props.theme.backgroundInput};
         &::placeholder {
-            color: #4C5958;
+            color: ${props => props.theme.placeholderColor};
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }
@@ -107,9 +108,11 @@ const Form = styled.form`
         width: 320px;
         height: 30px;
         border-radius: 4px;
-        border: 1px solid #FFB800;
+        border: 1px solid ${props => props.theme.primary};
+        background-color: ${props => props.theme.backgroundInput};
+        color: ${props => props.theme.color};
         &::placeholder {
-            color: #4C5958;
+            color: ${props => props.theme.placeholderColor};
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }
@@ -120,8 +123,8 @@ const Form = styled.form`
         font-size: 18px;
         border-radius: 8px;
         border: none;
-        background-color: #FFB800;
-        color: #FFFFFF;
+        background-color: ${props => props.theme.primary};
+        color: ${props => props.theme.white};
         font-weight: bold;
         padding-left: 10px;
         font-family: 'Nunito', sans-serif;
@@ -129,19 +132,19 @@ const Form = styled.form`
     p {
         font-family: 'Nunito', sans-serif;
         font-weight: bold;
-        color: #868585;
+        color: ${props => props.theme.color};
     }
 `
 const Button = styled.button`
     width:  120px;
     height: 35px;
-    color: #ffffff;
+    color:  ${props => props.theme.white};
     font-family: 'Nunito', sans-serif;
     border-radius: 4px;
     font-weight: bold;
     font-size: 18px;
     border: none;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
     cursor: pointer;
     &:disabled {
         opacity: 0.9;
@@ -151,13 +154,14 @@ const Button = styled.button`
 const ButtonClose = styled.button`
     width:  120px;
     height: 35px;
-    color: #ffffff;
+    color: ${props => props.theme.back};
     font-family: 'Nunito', sans-serif;
     border-radius: 4px;
     font-weight: bold;
     font-size: 18px;
     border: none;
-    background-color: #363532;
+    background-color: ${props => props.theme.buttonLoginColor};
+    color: ${props => props.theme.white};
     cursor: pointer;
     &:disabled {
         opacity: 0.9;

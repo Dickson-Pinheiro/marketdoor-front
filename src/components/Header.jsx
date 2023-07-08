@@ -28,7 +28,7 @@ const ContainerHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: ${props => props.theme.primary};
+    background-color: ${props => props.theme.headerBackground};
 `
 
 const HeaderContent = styled.div`
@@ -46,7 +46,7 @@ const Logo = styled.div`
         font-family: 'Nunito', sans-serif;
         font-weight: 800;
         font-size: 24px;
-        color: ${props => props.theme.black};
+        color: ${props => props.theme.logoColor};
     }
 `
 
@@ -64,7 +64,7 @@ const ContainerLoginLinks = styled.div`
         align-items: center;
         justify-content: center;
         gap: 20px;
-        background-color: ${props => props.theme.black};
+        background-color: ${props => props.theme.buttonLoginColor};
         color: ${props => props.theme.primary};
         border: none;
         border-radius: 12px;
@@ -73,9 +73,10 @@ const ContainerLoginLinks = styled.div`
         height: 32px;
         font-family: 'Nunito', sans-serif;
         font-weight: 800;
-        transition: 300ms;
     &:hover {
         color: ${props => props.theme.secondary};
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 0px;
     }
     }
     ul {
@@ -84,15 +85,19 @@ const ContainerLoginLinks = styled.div`
         flex-direction: column;
         gap: 5px;
         position: absolute;
-        background-color: ${props => props.theme.black};
+        top: 23px;
+        background-color: ${props => props.theme.buttonLoginColor};
         width: 120px;
-        padding: 10px;
-        border-radius: 8px;
+        padding: 18px;
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
         a {
             text-decoration: none;
             color: ${props => props.theme.primary};
-            font-weight: 800;
+            font-weight: 600;
             font-size: 14px;
+            font-family: 'Nunito', sans-serif;
+            transition: 300ms;
             &:hover {
                 color: ${props => props.theme.secondary};
             }

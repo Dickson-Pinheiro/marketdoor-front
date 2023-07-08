@@ -70,6 +70,6 @@ const ContainerLogo = styled.div`
         font-family: 'Nunito', sans-serif;
         font-size: 32px;
         font-weight: bold;
-        color: ${props => props.theme.color};
+        color: ${props => props.theme.logoColor};
     }
 `

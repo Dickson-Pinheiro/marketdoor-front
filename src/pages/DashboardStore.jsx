@@ -105,7 +105,7 @@ const ContainerTitle = styled.div`
         font-family: 'Nunito', sans-serif;
         font-size: 18px;
         font-weight: bold;
-        color: #868585;
+        color: ${props => props.theme['gray-2']};
     }
 `
 
@@ -134,19 +134,19 @@ const AddProduct = styled.button`
     width: 100px;
     height: 100px;
     border-radius: 50%;
-    border: 1px solid #d9d9d9;
+    border: 1px solid ${props => props.theme['gray-4']};
     cursor: pointer;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
 `
 const AsideContent = styled.aside`
     width: 300px;
-    background-color: #1a1811;
+    background-color: ${props => props.theme.asideColor};
     min-height: 100vh;
     padding: 12px;
     h1 {
         font-family: 'Bebas Neue', sans-serif;
         font-size: 28px;
-        color: #d8d6d6;
+        color:  ${props => props.theme.primary};
     }
 `
 
@@ -158,5 +158,5 @@ const ContainerMain = styled.div`
 const FooterDash = styled.footer`
     width: 100%;
     height: 120px;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
 `

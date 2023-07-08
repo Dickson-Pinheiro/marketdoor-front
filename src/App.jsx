@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={orangeBlack}>
       <ToastContainer />
       <GlobalStyles />
       <Router />

@@ -43,7 +43,7 @@ export default function MarketForm() {
                             <Field name="password" placeholder="password..." type="password" required />
                             <ErrorMessage name="password" component="p" />
                         </ContainerInput>
-                        <Button disable={formik.isSubmitting} type="submit">signup</Button>
+                        <Button disabled={formik.isSubmitting} type="submit">signup</Button>
                     </FormStyle>
                 )
             }

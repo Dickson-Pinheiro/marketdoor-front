@@ -1,6 +1,10 @@
 export const orangeBlack = {
     primary: 'rgb(245, 131, 54)',
     secondary: '#FFB800',
+    logoColor: 'rgb(245, 131, 54)',
+    asideColor: '#1a1811',
+    buttonLoginColor: '#0a0a0a',
+    headerBackground: '#000000',
     white: '#FFFFFF',
     black: '#000000',
     gray: '#d9d9d9',
