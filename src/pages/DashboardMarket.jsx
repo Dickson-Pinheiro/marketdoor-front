@@ -102,9 +102,13 @@ const ContainerRedirect = styled.div`
     p {
         font-family: 'Nunito', sans-serif;
         font-weight: bold;
-        color: #868585;
+        color: ${props => props.theme.color};
         a {
-            color: #FFB800;
+            color: ${props => props.theme.primary};
+            transition: 300ms;
+            &:hover {
+                color: ${props => props.theme.secondary};
+            }
         }
     }
 `
@@ -124,12 +128,13 @@ const ContainerTitle = styled.div`
     h1 {
         font-family: 'Bebas Neue', sans-serif;
         font-size: 28px;
+        color: ${props => props.theme.color};
     }
     p {
         font-family: 'Nunito', sans-serif;
         font-size: 18px;
         font-weight: bold;
-        color: #868585;
+        color: ${props => props.theme.color};
     }
 `
 
@@ -155,7 +160,7 @@ const Form = styled.form`
         font-family: 'Nunito', sans-serif;
         font-size: 20px;
         font-weight: bold;
-        color: #4C5958;
+        color: ${props => props.theme.color};
     }
 `
 
@@ -168,12 +173,14 @@ const ContainerInputs = styled.div`
         font-family: 'Nunito', sans-serif;
         font-weight: 800;
         padding-left: 10px;
+        color: ${props => props.theme.color};
         width: 220px;
         height: 30px;
         border-radius: 4px;
-        border: 1px solid #FFB800;
+        border: 1px solid ${props => props.theme.primary};
+        background-color: ${props => props.theme.backgroundInput};
         &::placeholder {
-            color: #4C5958;
+            color: ${props => props.theme.placeholderColor};
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }
@@ -183,13 +190,13 @@ const ContainerInputs = styled.div`
 const Button = styled.button`
     width: 80px;
     height: 25px;
-    color: #ffffff;
+    color: ${props => props.theme.white};
     font-family: 'Nunito', sans-serif;
     border-radius: 4px;
     font-weight: bold;
     font-size: 12px;
     border: none;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
     cursor: pointer;
     &:disabled {
         opacity: 0.9;

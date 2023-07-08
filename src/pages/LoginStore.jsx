@@ -26,8 +26,7 @@ export default function LoginStore() {
     return (
         <ContainerLogin>
             <ContainerLogo>
-                <img src={logoImg} />
-                <h1>Market Door</h1>
+                <h1>MarketDoor</h1>
             </ContainerLogo>
             <Formik
                 initialValues={{ username: '', password: '' }}
@@ -60,7 +59,6 @@ export default function LoginStore() {
 const ContainerLogin = styled.div`
     width: 100%;
     min-height: 100vh;
-    background-color: #ffffff;
 `
 
 const ContainerLogo = styled.div`
@@ -71,13 +69,10 @@ const ContainerLogo = styled.div`
     gap: 3px;
     padding: 15px;
     margin-bottom: 50px;
-    img {
-        width: 90px;
-    }
     h1 {
-        font-family: 'Bebas Neue', sans-serif;
+        font-family: 'Nunito', sans-serif;
         font-size: 32px;
         font-weight: bold;
-        color: #030532;
+        color: ${props => props.theme.black};
     }
     `

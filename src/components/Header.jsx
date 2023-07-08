@@ -28,7 +28,7 @@ const ContainerHeader = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
 `
 
 const HeaderContent = styled.div`
@@ -46,7 +46,7 @@ const Logo = styled.div`
         font-family: 'Nunito', sans-serif;
         font-weight: 800;
         font-size: 24px;
-        color: #030532;
+        color: ${props => props.theme.black};
     }
 `
 
@@ -64,8 +64,8 @@ const ContainerLoginLinks = styled.div`
         align-items: center;
         justify-content: center;
         gap: 20px;
-        background-color: #030532;
-        color: #FFB800;
+        background-color: ${props => props.theme.black};
+        color: ${props => props.theme.primary};
         border: none;
         border-radius: 12px;
         cursor: pointer;
@@ -75,8 +75,7 @@ const ContainerLoginLinks = styled.div`
         font-weight: 800;
         transition: 300ms;
     &:hover {
-        background-color: #030532;
-        color: #FFB800;
+        color: ${props => props.theme.secondary};
     }
     }
     ul {
@@ -85,17 +84,17 @@ const ContainerLoginLinks = styled.div`
         flex-direction: column;
         gap: 5px;
         position: absolute;
-        background-color: #030532;
+        background-color: ${props => props.theme.black};
         width: 120px;
         padding: 10px;
         border-radius: 8px;
         a {
             text-decoration: none;
-            color: #FFB800;
+            color: ${props => props.theme.primary};
             font-weight: 800;
             font-size: 14px;
             &:hover {
-                color: #FFFFFF;
+                color: ${props => props.theme.secondary};
             }
         }
     }

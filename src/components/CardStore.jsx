@@ -13,12 +13,16 @@ const CardStoreContainer = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
     padding: 8px;
     border-radius: 4px;
     width: 100%;
     max-width: 800px;
-    color: #FFFFFF;
+    color: ${props => props.theme.white};
+    cursor: pointer;
+    &:hover {
+        background-color: ${props => props.theme.secondary};
+    }
     p {
         font-family: 'Nunito', sans-serif;
         strong {

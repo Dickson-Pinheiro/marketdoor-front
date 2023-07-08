@@ -11,14 +11,18 @@ export const FormStyle = styled.form`
 export const Button = styled.button`
     width: 120px;
     height: 50px;
-    color: #ffffff;
+    color: ${props => props.theme.white};
     font-family: 'Nunito', sans-serif;
     border-radius: 12px;
     font-weight: bold;
     font-size: 24px;
     border: none;
-    background-color: #FFB800;
+    background-color: ${props => props.theme.primary};
     cursor: pointer;
+    transition: 300ms;
+    &:hover {
+        background-color: ${props => props.theme.hoverButton};
+    }
     &:disabled {
         opacity: 0.9;
     }
@@ -30,19 +34,21 @@ export const ContainerInput = styled.div`
     gap: 2px;
     p {
         font-size: 12px;
-        color: #FFB800;
+        color: ${props => props.theme.secondary};
         font-family: 'Nunito', sans-serif;
     }
     input {
         font-family: 'Nunito', sans-serif;
         font-weight: 800;
+        color: ${props => props.theme.color};
         padding-left: 15px;
         width: 320px;
         height: 50px;
         border-radius: 8px;
-        border: 3px solid #FFB800;
+        border: 1px solid ${props => props.theme.primary};
+        background-color: ${props => props.theme.backgroundInput};
         &::placeholder {
-            color: #4C5958;
+            color: ${props => props.theme.placeholderColor};
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }

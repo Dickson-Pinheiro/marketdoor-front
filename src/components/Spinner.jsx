@@ -5,7 +5,7 @@ export default function Spinner() {
 
     return (
         <ContainerSpinner>
-            <PulseLoader color="#FFB800" />
+            <PulseLoader />
         </ContainerSpinner>
     )
 
@@ -19,4 +19,7 @@ const ContainerSpinner = styled.div`
     max-width: 900px;
     margin: 0 auto;
     margin-top: 120px;
+    svg {
+        color: ${props => props.theme.primary}
+    }
 `

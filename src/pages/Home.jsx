@@ -29,9 +29,9 @@ const Content = styled.div`
         font-size: 24px;
         font-weight: 700;
         font-family: 'Nunito', sans-serif;
-        color: #030532;
+        color: ${props => props.theme.color};
         span {
-            color: #FFB800;
+            color: ${props => props.theme.primary};
         }
     }
 `
