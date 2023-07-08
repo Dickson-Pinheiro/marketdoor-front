@@ -7,7 +7,7 @@ export default function Pagination({ current, setCurrent, count, updateProducts,
         setCurrent(newCurrent)
         setUpdateProducts(!updateProducts)
     }
-    let pageLength = 4
+    let pageLength = 12
     if (count < pageLength) {
         return ''
     }
@@ -19,7 +19,7 @@ export default function Pagination({ current, setCurrent, count, updateProducts,
                     <Selected>{current}</Selected>
                     <NoSelected onClick={() => updateCurrent(current + 1)}>{current + 1}</NoSelected>
                 </Container>
-                <FaArrowRight />
+                <FaArrowRight onClick={() => updateCurrent(current + 1)}/>
             </ContainerArrow>
         )
     }
@@ -44,6 +44,7 @@ export default function Pagination({ current, setCurrent, count, updateProducts,
                     <NoSelected onClick={() => updateCurrent(current - 1)}>{current - 1}</NoSelected>
                     <Selected>{current}</Selected>
                 </Container>
+                <FaArrowRight color='#868585'/>
             </ContainerArrow>
         )
     }

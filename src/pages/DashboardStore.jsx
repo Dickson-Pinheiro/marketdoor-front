@@ -51,37 +51,48 @@ export default function DashboardStore() {
 
     return (
         <ContainerDashBoardStore>
-            <ContainerTitle>
-                <h1>Dashboard</h1>
-                <p>Aqui você pode criar e gerenciar novos produtos para a sua loja!</p>
-            </ContainerTitle>
-            <ContainerContent>
-                {products === undefined ? <Spinner /> : (
-                    products.length === 0 ? <NoProduct /> : (
-                        <ContainerProducts>
-                            {
-                                products.map(item => <CardProduct
-                                    key={item.id}
-                                    category={item.category.category}
-                                    description={item.description}
-                                    image_url={item.image_url}
-                                    name={item.name}
-                                    price={item.price}
-                                />
-                                )
-                            }
-                        </ContainerProducts>
-                    )
-                )}
-                {count ? <Pagination updateProducts={updateProducts} setUpdateProducts={setUpdateProducts} count={count} setCurrent={setCurrent} current={current} /> : ''}
-            </ContainerContent>
+            <ContainerMain>
+                <AsideContent>
+                    <h1>Dashboard</h1>
+                </AsideContent>
+                <ContainerContent>
+                    <ContainerTitle>
+                        <p>Aqui você pode criar e gerenciar novos produtos para a sua loja!</p>
+                    </ContainerTitle>
+                    {products === undefined ? <Spinner /> : (
+                        products.length === 0 ? <NoProduct /> : (
+                            <ContainerProducts>
+                                {
+                                    products.map(item => <CardProduct
+                                        key={item.id}
+                                        category={item.category.category}
+                                        description={item.description}
+                                        image_url={item.image_url}
+                                        name={item.name}
+                                        price={item.price}
+                                    />
+                                    )
+                                }
+                            </ContainerProducts>
+                        )
+                    )}
+                    {count ? <Pagination updateProducts={updateProducts} setUpdateProducts={setUpdateProducts} count={count} setCurrent={setCurrent} current={current} /> : ''}
+                </ContainerContent>
+            </ContainerMain>
             <Modal open={open} setOpen={setOpen}><ProductForm setUpdateProducts={setUpdateProducts} updateProducts={updateProducts} open={open} setOpen={setOpen} /></Modal>
             <AddProduct onClick={openModal}><FaPlus size={30} color='#FFFFFF' /></AddProduct>
+            <FooterDash></FooterDash>
         </ContainerDashBoardStore>
     )
 }
 
 const ContainerContent = styled.div`
+    padding: 12px;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
 
 const ContainerTitle = styled.div`
@@ -90,10 +101,6 @@ const ContainerTitle = styled.div`
     align-items: center;
     justify-content: center;
     margin-bottom: 12px;
-    h1 {
-        font-family: 'Bebas Neue', sans-serif;
-        font-size: 28px;
-    }
     p {
         font-family: 'Nunito', sans-serif;
         font-size: 18px;
@@ -105,7 +112,6 @@ const ContainerTitle = styled.div`
 const ContainerDashBoardStore = styled.main`
     min-height: 100vh;
     width: 100%;
-    padding: 12px;
     display: flex;
     flex-direction: column;
 `
@@ -131,5 +137,26 @@ const AddProduct = styled.button`
     border: 1px solid #d9d9d9;
     cursor: pointer;
     background-color: #FFB800;
+`
+const AsideContent = styled.aside`
+    width: 300px;
+    background-color: #1a1811;
+    min-height: 100vh;
+    padding: 12px;
+    h1 {
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 28px;
+        color: #d8d6d6;
+    }
+`
 
+const ContainerMain = styled.div`
+    display: flex;
+    gap: 30px;
+`
+
+const FooterDash = styled.footer`
+    width: 100%;
+    height: 120px;
+    background-color: #FFB800;
 `
