@@ -1,10 +1,10 @@
 export const defaultTheme = {
     primary: 'rgb(245, 131, 54)',
+    secondary: '#FFB800',
     headerBackground: 'rgb(245, 131, 54)',
     logoColor: '#000000',
     asideColor: '#1a1811',
     buttonLoginColor: '#000000',
-    secondary: '#FFB800',
     white: '#FFFFFF',
     black: '#000000',
     gray: '#d9d9d9',

@@ -40,11 +40,11 @@ export default function LoginStore() {
                     formik => (
                         <FormStyle onSubmit={formik.handleSubmit}>
                             <ContainerInput>
-                                <Field name="username" placeholder="username..." type="text" />
+                                <Field name="username" placeholder="username..." type="text" required/>
                                 <ErrorMessage name="username" component="p" />
                             </ContainerInput>
                             <ContainerInput>
-                                <Field name="password" placeholder="password..." type="password" />
+                                <Field name="password" placeholder="password..." type="password" required/>
                                 <ErrorMessage name="password" component="p" />
                             </ContainerInput>
                             <Button disabled={formik.isSubmitting} type="submit">Login</Button>
