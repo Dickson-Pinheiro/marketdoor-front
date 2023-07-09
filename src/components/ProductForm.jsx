@@ -95,13 +95,14 @@ const Form = styled.form`
         border-radius: 4px;
         border: 1px solid ${props => props.theme.placehouderColor};
         background-color: ${props => props.theme.backgroundInput};
+        border: 1px solid ${props => props.theme.primary};
         &::placeholder {
             color: ${props => props.theme.placeholderColor};
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }
     }
-    input[type=text] {
+    input[type=text], textarea {
         font-family: 'Nunito', sans-serif;
         font-weight: 800;
         padding-left: 10px;
@@ -116,6 +117,10 @@ const Form = styled.form`
             font-weight: 800;
             font-family: 'Nunito', sans-serif;
         }
+    }
+    textarea {
+        resize: none;
+        height: 90px;
     }
     select {
         width: 320px;

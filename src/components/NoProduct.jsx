@@ -16,7 +16,7 @@ const NoProductContainer = styled.div`
     max-width: 900px;
     margin: 0 auto;
     p {
-        color: #868585;
+        color: ${props => props.theme['gray-2']};
         font-family: 'Nunito', sans-serif;
         font-size: 18px;
         font-weight: bold;

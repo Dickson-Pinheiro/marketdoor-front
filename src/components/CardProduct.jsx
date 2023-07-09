@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import Category from './Category'
 
 export default function CardProduct({name, description, image_url, price, category}){
     return(
@@ -10,8 +11,8 @@ export default function CardProduct({name, description, image_url, price, catego
                 <p>{description}</p>
             </Content>
             <Infos>
-                <p>R${price/100}</p>
-                <p>{category}</p>
+                <p>R${(price/100).toFixed(2).toString().replace('.', ',')}</p>
+                <Category category={category}/>
             </Infos>
 
         </ContainerCardProduct>
@@ -24,14 +25,14 @@ position: relative;
 flex-direction: column;
 width: 220px;
 height: 260px;
-background-color: #FFB800;
+background-color: ${props => props.theme.backgroundProduct};
 cursor: pointer;
 transition: 300ms;
-border: 1px solid #FFFFFF;
+border: 3px solid ${props => props.theme.backgroundColor};
 border-radius: 9px;
 transition: 300ms;
 &:hover {
-    border: 1px solid #FFB800;
+    border: 3px solid ${props => props.theme.hoverProduct};
 }
 `
 const ContainerImage = styled.div`
@@ -39,10 +40,9 @@ const ContainerImage = styled.div`
     height: 120px;
     background-image: ${props => 'url(' + props.bg + ')' };
     background-repeat: no-repeat;
-    background-size: contain;
+    background-size: cover;
     background-position: center;
-    background-color: white;
-    border-radius: 8px 8px 50px 50px;
+    border-radius: 6px 6px 50px 50px;
     transition: 300ms;
 `
 
@@ -53,15 +53,16 @@ const Content = styled.div`
     gap: 5px;
     padding: 5px;
     h1 {
-        font-weight: bold;
+        font-weight: 900;
         font-family: 'Nunito', sans-serif;
         font-size: 18px;
+        color: ${props => props.theme.white};
     }
     p {
         font-family: 'Nunito', sans-serif;
-        font-weight: bold;
+        font-weight: 400;
         font-size: 14px;
-        color: #4C5958;
+        color: ${props => props.theme.white}
     }
 `
 
@@ -69,14 +70,15 @@ const Infos = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px;
     position: absolute;
     bottom: 0;
+    padding-left: 3px;
+    box-sizing: border-box;
     width: 220px;
-    color: #ffffff;
+    color: ${props => props.theme.white};
     p {
         font-family: 'Nunito', sans-serif;
-        font-weight: bold;
+        font-weight: 800;
         font-size: 16px;
     }
 `

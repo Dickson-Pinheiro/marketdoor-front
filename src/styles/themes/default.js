@@ -15,9 +15,12 @@ export const defaultTheme = {
     backgroundColor: '#FFFFFF',
     hoverButton: '#FFB800',
     backgroundInput: '#FFFFFF',
+    backgroundProduct: 'rgb(245, 131, 54)',
     color: '#000000',
+    hoverProduct: '#FFB800',
     categories: {
         padaria: 'green',
-        carnes: 'red'
+        carnes: 'red',
+        Hortifruti: 'blue'
     }
 }

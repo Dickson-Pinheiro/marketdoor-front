@@ -14,9 +14,12 @@ export const orangeBlack = {
     hoverButton: '#FFB800',
     placeholderColor: '#FFFFFF',
     backgroundInput: '#0a0a0a',
+    backgroundProduct: '#0a0a0a',
     color: '#FFFFFF',
+    hoverProduct: 'rgb(245, 131, 54)',
     categories: {
         padaria: 'green',
-        carnes: 'red'
+        carnes: 'red',
+        Hortifruti: 'blue'
     }
 }

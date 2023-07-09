@@ -5,7 +5,7 @@ export default function Spinner() {
 
     return (
         <ContainerSpinner>
-            <PulseLoader />
+            <PulseLoader color='rgb(245, 131, 54)'/>
         </ContainerSpinner>
     )
 
